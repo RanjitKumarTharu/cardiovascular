@@ -3,14 +3,6 @@ from app.schema import Cardio
 from app.model import load_model_scaler
 import pandas as pd
 
-#for html
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
-
-# Templates folder
-templates = Jinja2Templates(directory="templates")
 
 
 
@@ -19,17 +11,11 @@ templates = Jinja2Templates(directory="templates")
 app = FastAPI()
 model , scaler = load_model_scaler()
 
-@app.get("/", response_class=HTMLResponse)
-async def home(request: Request):
-    return templates.TemplateResponse(
-        "index.html",
-        {"request": request}
-    )
 
 # get method 
-# @app.get("/")
-# def home():
-#     return "Welcome to FastAPI Application"
+@app.get("/")
+def home():
+    return "Welcome to FastAPI Application"
 
 # post method for prediction
 
