@@ -4,3 +4,4 @@ joblib
 fastapi
 pydantic
 streamlit
+jinja2
