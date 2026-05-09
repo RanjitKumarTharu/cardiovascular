@@ -12,17 +12,19 @@ from fastapi.templating import Jinja2Templates
 # Templates folder
 templates = Jinja2Templates(directory="templates")
 
+
+
+# object of FastAPI
+
+app = FastAPI()
+model , scaler = load_model_scaler()
+
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse(
         "index.html",
         {"request": request}
     )
-
-# object of FastAPI
-
-app = FastAPI()
-model , scaler = load_model_scaler()
 
 # get method 
 # @app.get("/")
